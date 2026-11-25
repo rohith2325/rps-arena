@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RPS Arena | Rock Paper Scissors</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">RPS<span>ARENA</span></div>
+        <div class="nav-label">PLAYER VS COMPUTER</div>
+    </header>
+
+    <main class="game-container">
+
+        <section class="hero">
+            <p class="eyebrow">WELCOME TO THE BATTLE</p>
+            <h1>ROCK PAPER <span>SCISSORS</span></h1>
+            <p class="hero-text">Make your move. Beat the computer. Become the champion.</p>
+        </section>
+
+        <section class="profile-section">
+    <div class="profile-heading">
+        <span class="profile-avatar">👤</span>
+        <div>
+            <h2 id="profileName">PLAYER</h2>
+            <p>YOUR GAMING PROFILE</p>
+        </div>
+    </div>
+
+    <div class="profile-input">
+        <input
+            type="text"
+            id="playerNameInput"
+            placeholder="Enter your player name"
+            maxlength="15"
+        >
+
+        <button id="saveNameBtn">SAVE NAME</button>
+    </div>
+        </section>
+
+        <section class="scoreboard">
+
+            <div class="score-card player-card">
+                <div class="player-icon">👤</div>
+                <p>PLAYER</p>
+                <h2 id="userScore">0</h2>
+                <span>You</span>
+            </div>
+
+            <div class="vs-section">
+                <span>VS</span>
+                <p id="roundNumber">ROUND 1</p>
+            </div>
+
+            <div class="score-card computer-card">
+                <div class="player-icon">🤖</div>
+                <p>COMPUTER</p>
+                <h2 id="computerScore">0</h2>
+                <span>CPU</span>
+            </div>
+
+        </section>
+
+        <section class="progress-section">
+            <div class="progress-heading">
+                <span>MATCH PROGRESS</span>
+                <span id="progressText">0 / 5 ROUNDS</span>
+            </div>
+            <div class="progress-track">
+                <div id="progressBar"></div>
+            </div>
+            <p class="match-rule">BEST OF 5 · FIRST TO 3 WINS</p>
+        </section>
+        
+        <section class="settings-section">
+    <div class="settings-heading">
+        <h2>GAME SETTINGS</h2>
+        <span>CHOOSE YOUR CHALLENGE</span>
+    </div>
+
+    <div class="difficulty-options">
+        <button class="difficulty-btn active" data-level="easy">
+            🟢 EASY
+        </button>
+
+        <button class="difficulty-btn" data-level="medium">
+            🟡 MEDIUM
+        </button>
+
+        <button class="difficulty-btn" data-level="hard">
+            🔴 HARD
+        </button>
+    </div>
+        </section>
+
+        <section class="battle-section">
+
+            <h2>MAKE YOUR MOVE</h2>
+            <p class="section-description">Choose your weapon to start the battle</p>
+
+            <div class="choices">
+
+                <button class="choice" data-choice="rock" aria-label="Choose rock">
+                    <span class="choice-emoji">✊</span>
+                    <span>ROCK</span>
+                </button>
+
+                <button class="choice" data-choice="paper" aria-label="Choose paper">
+                    <span class="choice-emoji">✋</span>
+                    <span>PAPER</span>
+                </button>
+
+                <button class="choice" data-choice="scissors" aria-label="Choose scissors">
+                    <span class="choice-emoji">✌️</span>
+                    <span>SCISSORS</span>
+                </button>
+
+            </div>
+
+            <div class="battle-result">
+
+                <div class="battle-player">
+                    <p>YOUR MOVE</p>
+                    <div id="userMove" class="move-display">❔</div>
+                </div>
+
+                <div class="result-center">
+                    <span id="resultIcon">⚡</span>
+                    <h2 id="result">READY?</h2>
+                    <p id="resultMessage">The battle starts with you!</p>
+                </div>
+
+                <div class="battle-player">
+                    <p>CPU MOVE</p>
+                    <div id="computerMove" class="move-display">❔</div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="stats-section">
+
+            <div class="stat-card">
+                <span>🔥</span>
+                <p>WIN STREAK</p>
+                <h3 id="winStreak">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <span>🏆</span>
+                <p>MATCH WINS</p>
+                <h3 id="matchWins">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <span>🎮</span>
+                <p>TOTAL ROUNDS</p>
+                <h3 id="totalRounds">0</h3>
+            </div>
+
+            <div class="stat-card">
+                <span>📊</span>
+                <p>WIN RATE</p>
+                <h3 id="winRate">0%</h3>
+            </div>
+
+        </section>
+
+        <section class="history-section">
+            <div class="history-heading">
+                <h2>RECENT BATTLES</h2>
+                <span>LAST 5 ROUNDS</span>
+            </div>
+
+            <div id="historyList" class="history-list">
+                <p class="empty-history">Your battle history will appear here.</p>
+            </div>
+        </section>
+
+        <section class="leaderboard-section">
+    <div class="history-heading">
+        <h2>🏆 LEADERBOARD</h2>
+        <span>TOP PLAYERS</span>
+    </div>
+
+    <div id="leaderboardList">
+        <p class="empty-history">No match records yet.</p>
+    </div>
+</section>
+
+<section class="rules-section">
+    <h2>📖 HOW TO PLAY</h2>
+
+    <div class="rule-item">
+        <span>✊</span>
+        <p>Rock beats Scissors.</p>
+    </div>
+
+    <div class="rule-item">
+        <span>✋</span>
+        <p>Paper beats Rock.</p>
+    </div>
+
+    <div class="rule-item">
+        <span>✌️</span>
+        <p>Scissors beats Paper.</p>
+    </div>
+
+    <p class="rules-footer">
+        First player to win 3 rounds becomes the champion!
+    </p>
+</section>
+
+        <div class="game-actions">
+            <button id="resetBtn" class="reset-btn">↻ NEW MATCH</button>
+            <button id="soundBtn" class="sound-btn">🔊 SOUND ON</button>
+        </div>
+
+    </main>
+
+        <div id="winnerModal" class="winner-modal">
+    <div class="winner-content">
+        <div class="winner-trophy">🏆</div>
+
+        <p class="winner-label">MATCH COMPLETED</p>
+
+        <h2 id="winnerTitle">YOU ARE THE CHAMPION!</h2>
+
+        <p id="winnerDescription">
+            Amazing performance!
+        </p>
+
+        <div class="winner-score">
+            <span id="finalUserScore">0</span>
+            <span> - </span>
+            <span id="finalComputerScore">0</span>
+        </div>
+
+        <button id="playAgainBtn">PLAY AGAIN</button>
+        <button id="closeWinnerBtn">CLOSE</button>
+    </div>
+        </div>
+
+    <footer>
+        <p>RPS ARENA © 2026 · BUILT FOR CHAMPIONS</p>
+    </footer>
+
+    <button id="musicToggleBtn" class="music-toggle">
+    🎵 MUSIC: ON
+</button>
+
+<audio id="backgroundMusic" loop preload="auto">
+    <source src="background.mp3.mp3" type="audio/mpeg">
+</audio>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
